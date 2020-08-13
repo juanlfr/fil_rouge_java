@@ -1,5 +1,0 @@
-package fr.ibformation.filrouge.services;
-
-public class ClientServiceImpl implements ClientService{
-
-}
