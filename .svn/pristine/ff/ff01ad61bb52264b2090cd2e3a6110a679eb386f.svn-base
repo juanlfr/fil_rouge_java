@@ -1,0 +1,8 @@
+package fr.ibformation.filrouge.services;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public interface LanguageService {
+
+}

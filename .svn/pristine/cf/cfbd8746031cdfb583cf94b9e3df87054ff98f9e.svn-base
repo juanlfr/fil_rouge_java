@@ -1,0 +1,42 @@
+package fr.ibformation.filrouge.controlers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import fr.ibformation.filrouge.beans.Film;
+import fr.ibformation.filrouge.services.FilmService;
+
+@RestController
+public class FilmControler {
+
+	@Autowired
+	private FilmService filmService;
+
+	@GetMapping("/liste")
+	public ModelAndView liste() {
+		List<Film> liste = filmService.findAll();
+		ModelAndView mav = new ModelAndView("listeFilm");
+		mav.addObject("liste", liste);
+		return mav;
+	}
+	
+	@GetMapping("/ajouter")
+	public ModelAndView ajouter() {
+		ModelAndView mav = new ModelAndView("ajouterFilm");
+		mav.addObject("film", new Film());
+		return mav;
+	}
+	
+	@PostMapping ("/creationFilm")
+	public ModelAndView creerFilm(@ModelAttribute ("film") Film film) {
+		filmService.createOrUpdate(film);
+		return ajouter();
+	}
+
+}
