@@ -55,15 +55,22 @@ public class FilmControler {
 	}
 	
 	@PostMapping ("/ajouter")
-	public void creerFilm(/*@ModelAttribute ("film")*/@RequestBody Film film) {
+	public Film creerFilm(/*@ModelAttribute ("film")*/@RequestBody Film film) {
 		//ModelAndView mav = new ModelAndView ("ajouterFilm");
+		Film newFilm = new Film();
 		System.out.println(film);
-			filmService.createOrUpdate(film);			
 		
+		if (film != null) {
+			newFilm = filmService.createOrUpdate(film);			
+		}
+		else {
+			System.out.println("object null");
+		}
 		/*mav.addObject("film", new Film());
 		mav.addObject("categorys", categoryService.findAll());
 		mav.addObject("language", languageService.findAll());
 		return mav;*/
+		return newFilm;
 	}
 	
 	/*
