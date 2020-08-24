@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -54,13 +55,19 @@ public class FilmControler {
 	}
 	
 	@PostMapping ("/ajouter")
-	public ModelAndView creerFilm(@ModelAttribute ("film") Film film) {
-		ModelAndView mav = new ModelAndView ("ajouterFilm");
-		filmService.createOrUpdate(film);
-		mav.addObject("film", new Film());
+	public void creerFilm(/*@ModelAttribute ("film")*/@RequestBody Film film) {
+		//ModelAndView mav = new ModelAndView ("ajouterFilm");
+		System.out.println(film);
+		if (film != null) {
+			filmService.createOrUpdate(film);			
+		}
+		else {
+			System.out.println("object null");
+		}
+		/*mav.addObject("film", new Film());
 		mav.addObject("categorys", categoryService.findAll());
 		mav.addObject("language", languageService.findAll());
-		return mav;
+		return mav;*/
 	}
 	
 	/*
