@@ -58,12 +58,8 @@ public class FilmControler {
 	public void creerFilm(/*@ModelAttribute ("film")*/@RequestBody Film film) {
 		//ModelAndView mav = new ModelAndView ("ajouterFilm");
 		System.out.println(film);
-		if (film != null) {
 			filmService.createOrUpdate(film);			
-		}
-		else {
-			System.out.println("object null");
-		}
+		
 		/*mav.addObject("film", new Film());
 		mav.addObject("categorys", categoryService.findAll());
 		mav.addObject("language", languageService.findAll());
