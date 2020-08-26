@@ -2,6 +2,7 @@ package fr.ibformation.filrouge.beans;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,7 @@ public class Reservation {
 	private LocalDateTime date;
 	@ManyToOne
 	private Cinema cinema;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Client client;
 	@ManyToOne
 	private Seance seance;

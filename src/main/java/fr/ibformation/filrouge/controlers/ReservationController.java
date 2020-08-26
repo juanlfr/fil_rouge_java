@@ -1,6 +1,7 @@
 package fr.ibformation.filrouge.controlers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fr.ibformation.filrouge.beans.Reservation;
 import fr.ibformation.filrouge.services.ReservationService;
-
+@CrossOrigin
 @RestController
 public class ReservationController {
 	@Autowired
