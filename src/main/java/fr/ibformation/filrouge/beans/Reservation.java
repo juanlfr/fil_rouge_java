@@ -25,5 +25,7 @@ public class Reservation {
 	private Cinema cinema;
 	@ManyToOne
 	private Client client;
+	@ManyToOne
+	private Seance seance;
 	private int seatsReserved;
 }
